@@ -586,8 +586,8 @@ export default function App() {
           </div>
           
           <div className="text-left md:text-right">
-            <p className="text-[10px] text-slate-500 uppercase font-bold tracking-widest">CodePilot AI: GitLab Integration Platform</p>
-            <p className="text-xs font-mono text-emerald-400 font-semibold">Autonomous Engineering Manager</p>
+            <p className="text-[10px] text-slate-500 uppercase font-bold tracking-widest">Google Cloud Rapid Agent Hackathon: GitLab Track</p>
+            <p className="text-xs font-mono text-orange-400 font-extrabold">$60,000 Global Prize Pool</p>
           </div>
         </div>
       </header>
@@ -662,33 +662,16 @@ export default function App() {
         </div>
 
         {/* Release Guardian Tile (1x1 card) */}
-        <div 
+        <button 
           id="tile-release-guardian"
-          className={`text-left col-span-1 row-span-1 bg-slate-900 border ${activeInspector === "release" ? "border-emerald-505 bg-emerald-950/10 border-emerald-500/50" : "border-slate-800 hover:border-slate-700"} rounded-3xl p-5 flex flex-col justify-between transition-all duration-300 group focus:outline-none min-h-[185px] hover:scale-105`}
+          onClick={() => setActiveInspector("release")}
+          className={`text-left col-span-1 row-span-1 bg-slate-900 border ${activeInspector === "release" ? "border-emerald-505 bg-emerald-950/10 border-emerald-500/50" : "border-slate-800 hover:border-slate-700"} rounded-3xl p-5 flex flex-col justify-between transition group focus:outline-none min-h-[185px]`}
         >
           <div className="flex justify-between items-start w-full">
-            <div className="flex items-start gap-2">
-              <div className={`p-2 rounded-xl transition ${activeInspector === "release" ? "bg-emerald-500/20 text-emerald-400" : "bg-emerald-500/10 text-emerald-500 group-hover:scale-105"}`}>
-                <Shield className="w-5 h-5" />
-              </div>
-              <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest pt-1">Release Guardian</span>
+            <div className={`p-2 rounded-xl transition ${activeInspector === "release" ? "bg-emerald-500/20 text-emerald-400" : "bg-emerald-500/10 text-emerald-500 group-hover:scale-105"}`}>
+              <Shield className="w-5 h-5" />
             </div>
-            <button
-              onClick={() => {
-                const reportUrl = `${window.location.origin}?report=release&decision=${releaseGuardResult.decision}`;
-                const shareText = `CodePilot Release Status: ${releaseGuardResult.decision} Release - ${releaseGuardResult.overallRiskRating} Risk`;
-                if (navigator.share) {
-                  navigator.share({ title: 'CodePilot Release Report', text: shareText, url: reportUrl });
-                } else {
-                  const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText + ' ' + reportUrl)}`;
-                  window.open(url, '_blank');
-                }
-              }}
-              className="p-2 rounded-lg hover:bg-slate-700/50 text-slate-400 hover:text-slate-200 transition-all duration-200"
-              title="Share Release Report"
-            >
-              <FileText className="w-4 h-4" />
-            </button>
+            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Release Guardian</span>
           </div>
 
           <div className="my-2">
@@ -701,24 +684,6 @@ export default function App() {
                 ({releaseGuardResult.overallRiskRating} Risk)
               </span>
             </div>
-            
-            {/* Mini Risk Breakdown for NO-GO decisions */}
-            {releaseGuardResult.decision === "NO-GO" && releaseGuardResult.checklist.length > 0 && (
-              <div className="mt-3 space-y-1">
-                <p className="text-[9px] text-amber-500/80 font-bold uppercase">Critical Issues:</p>
-                <div className="flex flex-wrap gap-1">
-                  {releaseGuardResult.checklist
-                    .filter(item => !item.completed)
-                    .slice(0, 3)
-                    .map((risk, idx) => (
-                      <span key={idx} className="inline-block text-[8px] bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded-full border border-amber-500/30 truncate">
-                        {risk.task.substring(0, 20)}...
-                      </span>
-                    ))
-                  }
-                </div>
-              </div>
-            )}
           </div>
 
           <div className="w-full">
@@ -730,28 +695,7 @@ export default function App() {
               <div className="h-full bg-emerald-500 w-[94%] transition-all duration-500"></div>
             </div>
           </div>
-
-          {/* Action Buttons */}
-          <div className="flex gap-2 mt-4">
-            <button
-              onClick={() => handleReleaseGuard()}
-              disabled={isGuarding}
-              className="w-full text-[10px] font-bold uppercase tracking-widest bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30 disabled:opacity-50 disabled:cursor-not-allowed border border-emerald-500/30 rounded-lg py-1.5 transition-all duration-200 flex items-center justify-center gap-1"
-            >
-              {isGuarding ? (
-                <>
-                  <RefreshCw className="w-3 h-3 animate-spin" />
-                  Running
-                </>
-              ) : (
-                <>
-                  <Play className="w-3 h-3" />
-                  Quick Run
-                </>
-              )}
-            </button>
-          </div>
-        </div>
+        </button>
 
         {/* Deadline Countdown Tile (1x1 card) */}
         <div id="tile-deadline" className="col-span-1 row-span-1 bg-gradient-to-br from-orange-600 to-red-600 text-white rounded-3xl p-5 flex flex-col justify-between shadow-xl shadow-orange-950/30 min-h-[185px]">

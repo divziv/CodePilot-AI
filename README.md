@@ -6,25 +6,10 @@ This project was built for the **Google Cloud Rapid Agent Hackathon** (GitLab In
 
 ---
 
-## 🎯 Unique Features for Hackathon Excellence
-
-### 1. Human-in-the-Loop (HITL) Guardrails via GitLab Issues
-Instead of executing high-impact actions directly (like merging a branch or scheduling deployment), the Release Guardian Agent creates an issue with a standard Markdown checkbox: `- [ ] Approve Release`.
-
-**The Workflow:** CodePilot listens for a GitLab Webhook. The moment a human checks that box, the MCP server triggers the actual deployment or merge action. This bridges the gap between pure autonomy and real-world safety.
-
-### 2. Live Context via MCP Real-time Event Streaming
-Most hackathon projects use a standard "request-response" pull mechanism. CodePilot upgrades this by using GitLab MCP webhooks to push live events (e.g., a pipeline failing mid-sprint) straight into the Engineering Insights Agent. This allows CodePilot to dynamically adjust sprint velocity estimates or ping developers while they are coding.
-
-### 3. Contextual Dev-Environment Diagnostics (The "Log-to-Line" Loop)
-The Code Review Agent cross-references failed GitLab CI/CD pipeline stack traces directly with specific lines of code in the Merge Request. The agent can then leave a comment saying: "Pipeline failed on line 42 due to a NullPointerException. Here is the exact fix..."
-
----
-
 ## ⏳ Hackathon Context
-* **Team:** #include<me>
-* **Built for:** Google Cloud Rapid Agent Hackathon (GitLab Integration Track)
-* **Focus:** Production-ready autonomous engineering manager for real software teams
+* **Timeline Constraint:** Submitted ahead of the cutoff of **Jun 12, 2026 @ 2:30 AM GMT+5:30**.
+* **Global Track Prize Pool:** $60,000 across multiple partner tracks ($5,000 for 1st, $3,000 for 2nd, and $2,000 for 3rd).
+* **Partner Focus Track:** GitLab Track.
 
 ---
 
@@ -147,7 +132,7 @@ APP_URL="YOUR_HOSTED_URL"
 ---
 
 ## 🧑‍⚖️ Submission Validation Checklist
-- [x] **Hosted Project URL:** [Studio App Link](https://ai.studio/apps/976a37e6-4251-49e9-afaf-5c64631658d5)
+- [x] **Hosted Project URL:** Provisioned via secure GCP container services.
 - [x] **Public Code Repository:** Root directory is public and contains open-source licensing.
 - [x] **Walkthrough Video:** ~3 minute length demonstrating direct GitLab MCP agent tool integrations and bento grid parameters.
 - [x] **Partner Track:** Strictly categorized in the **GitLab Track** of the Google Cloud Rapid Agent Hackathon.
