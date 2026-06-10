@@ -1,0 +1,6 @@
+{
+  "name": "CodePilot AI: Autonomous Engineering Manager",
+  "description": "An AI Engineering Manager powered by Gemini and GitLab MCP that autonomously reviews code, manages technical debt, plans sprints, and determines release readiness.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
